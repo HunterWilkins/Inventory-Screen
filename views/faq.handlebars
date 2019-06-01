@@ -1,0 +1,37 @@
+<div id="content">
+    <h2>Frequently Asked Questions</h2>
+    <hr>
+    <h3>What is this app?</h3>
+    <p>
+        One day, I was taking stock of my own inventory (food, toiletries, etc.)
+        when I was suddenly struck with a horrific, ironic case of lethargy.
+        I didn't want to write down every single food item I had in my house, constantly
+        update it by grabbing the document and a pen, and who knows what else. So, I decided
+        it would be easier to program a full-stack web application that allows me to 
+        keep track of my stock in a more easy-to-access and less abhorrently-boring fashion.
+    </p>
+    <br>
+    <h3>How do I use this thing?</h3>
+    <p>
+        You should think of this app like the world's largest pair of pants. Let's say you want to put an
+        apple in your pocket. Well, you're not just going to put that <em>fruit</em> in your <em>vegetable</em>
+        pocket, are you? OF COURSE NOT! You'll want a designated pocket for each "genre" of item. If you want to log
+        fruits, you create a "Fruit" pocket and store the fruit there. Once you've done that, you can access your
+        fruit pocket at any time to either add to it, edit the existing fruits, or delete from it.
+        <br>
+        Of course, there are some liberties I've taken with names. "Sell All," for example, empties all of your 
+        inventories and gives you back the total amount it all cost. All the information is wiped when you do this. 
+    </p>
+    <br>
+    <h3>How are you storing all this information?</h3>
+    <p>
+        Hehehehehehh. <em>I'm</em> not, you are! This program uses local storage to hold all your items. 
+        For those who are unaware, local storage is fully client-side, meaning that the only person who can see
+        it all is <em>you</em>. If you're in Google Chrome, you can right-click on the page and go to "Inspect," then go
+        to the top right, hit the double-arrows, and choose "Application." THEN, you'll see a tab called "Local Storage," 
+        and that'll show you a little item in the "Key" tab called "inventories." This is the array that holds all of your items as objects,
+         with their respective values, names, and quantities.
+    </p>
+</div>
+
+<script src = "/js/faq.js"></script>

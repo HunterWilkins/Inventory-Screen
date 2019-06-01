@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="/css/landing.css">
+<nav>
+    <h1 id = "web-title">H1</h1>
+    <div id="navbuttons">
+        <button func = "add">New Pocket</button>
+        <button>Delete Pocket</button>
+        <button><a href = "/faq">FAQ</a></button>
+    </div>
+</nav>
+
+<div id="content">
+    <button id = "sell-all">Sell All</button>
+    <div id="dash">
+        <div func = "add" class="pocket">
+            <p>+</p>
+        </div>
+    </div>
+
+    <div id="inventory">
+        <button id = "close-inv">V</button>
+        <h3 id = "inv-name"></h3>
+        <div id="inv-buttons">
+            <button>+</button>
+            <button>-</button>
+        </div>
+
+        <div class="legend">
+            <p class = "name"><em>Name</em></p>
+            <p class = "price"><em>Value</em></p>
+            <p class = "quantity"><em>#</em></p>
+        </div>
+
+        <div id="inv-items">
+
+        </div>
+        
+    </div>
+
+    <div id="modal">
+        <input id = "item-name" type="text" placeholder= "Item Name">
+        <input id = "item-price" type="text" placeholder = "Item Price">
+        <input id = "item-quantity" type="text" placeholder = "Item Quantity">
+        <button id = "submit">Submit</button>
+        <button id = "close-btn">X</button>
+    </div>
+
+    <div id="pocket-book">
+        <div id="pocket-book-content">
+            <div class="new-pocket" >
+                <p>Fruit</p>
+            </div>
+
+            <div class="new-pocket">
+                <p>Vegetable</p>
+            </div>
+            
+            <div class="new-pocket">
+                <p>Candy</p>
+            </div>
+
+            <div class="new-pocket">
+                <p>Salty</p>
+            </div>
+        </div>
+        <button id = "close-btn-2">X</button>
+        
+    </div>
+</div>
+
+
+
+<script src = "/js/landing.js"></script>

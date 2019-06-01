@@ -1,0 +1,220 @@
+body{
+    background:rgb(56, 56, 31)
+}
+
+button {
+    background: rgb(120, 108, 71);
+    color:rgb(213, 191, 144);
+    border:rgb(213, 191, 144) solid 2px;
+    text-shadow:0 2px 5px rgba(13, 18, 11, .75);
+}
+
+#close-inv {
+    border:none;
+    width:100%;
+    padding:10px;
+}
+
+#inv-name {
+    padding:5px;
+    color:rgb(213, 191, 144);
+    font-size:30px;
+    font-weight:bolder;
+}
+
+#dash {
+    text-align:center;
+}
+
+#sell-all {
+    position:fixed;
+    top:0;
+    right:0;
+    padding:10px;
+    font-size:20px;
+}
+
+.pocket {
+    cursor:pointer;
+    position:relative;
+    display:inline-block;
+    width:100px;
+    background:rgb(120, 108, 71);
+    color:white;
+    text-align:center;
+    height:100px;
+    font-size:40px;
+    border-radius:5px;
+    box-shadow: 0 5px 5px rgb(26, 32, 18);
+}
+
+.pocket > * {
+    position:absolute;
+    transform: translate(-50%, -50%);
+    top:50%;
+    left:50%;
+}
+
+#inventory {
+    position: fixed;
+    height:400px;
+    background:rgb(26, 32, 18);
+    z-index:8;
+    width:100%;
+    left:0;
+    bottom:-400px;
+    overflow-y:scroll;
+
+    transition: .25s;
+}
+
+#inv-buttons {
+    position:absolute;
+    right:5px;
+    bottom:5px;
+    padding:15px;
+}
+
+#inv-buttons button {
+    height:50px;
+    width:50px;
+}
+
+.legend, .item {
+    font-size:20px;
+    width:100%;
+    padding:15px;
+    color:rgb(213, 191, 144);
+}
+
+
+.item > *, .legend > * {
+    display:inline-block;
+    text-align:center;
+    padding:5px;
+}
+
+.name {
+    width:60%;
+    text-align:left;
+
+}
+
+.price {
+    width:18%;
+}
+
+.quantity {
+    width:18%;
+}
+
+.item {
+    color:rgb(213, 191, 144);
+    background:rgba(47, 47, 32, 0.8);
+}
+
+#modal {
+    display:none;
+    
+    position:fixed;
+    transform: translate(-50%, -50%);
+    top:50%;
+    left:50%;
+    width:80%;
+    background:rgb(120, 108, 71);
+    text-align:center;
+    padding:15px;
+    box-shadow: 0 20px 20px rgb(13, 18, 11);
+    z-index:11;
+}
+
+#modal input {
+    font-size:20px;
+    padding:10px;
+    margin:5px;
+    width:90%;
+    display:inline-block;
+
+    border:none;
+    background:rgb(56, 56, 31);
+    color:rgb(213, 191, 144);
+}
+
+#submit, #close-btn {
+    margin:5px;
+    font-size:20px;
+    font-weight:bolder;
+    background:rgb(26, 32, 18);
+    color:rgb(213, 191, 144);
+    border:rgb(213, 191, 144) solid 2px;
+    padding:10px;
+}
+
+#close-btn {
+    width:16%;
+}
+
+#close-btn-2 {
+    border:none;
+    font-size:20px;
+    width:50px;
+    height:50px;
+    position:absolute;
+    top:0px;
+    right:0;
+    background:rgb(120, 108, 71);
+    color:rgb(213, 191, 144);
+}
+
+#submit {
+    width:76%;
+}
+
+#pocket-book {
+    display:none;
+    background:rgb(13, 18, 11);
+    position:fixed;
+    transform:translate(-50%, -50%);
+    top:50%;
+    left:50%;
+    width:90%;
+    max-height:80vh;
+    overflow-y: scroll;
+    padding:15px;
+}
+
+#pocket-book-content {
+    width:80%;
+}
+
+.new-pocket {
+    position:relative;
+    width:26%;
+    text-align:center;
+    background-image: url("/fruit-placeholder.jpg");
+    background-position:center;
+    background-size:100%;
+    margin:5px;
+    display:inline-block;
+}
+
+.new-pocket:before {
+    content: "";
+    display:block;
+    padding-top:100%;
+}
+
+.new-pocket p {
+    position:absolute;
+    transform:translateX(-50%);
+    bottom:0;
+    left:50%;
+    color:rgb(213, 191, 144);
+    font-size:20px;
+    background:rgba(13, 18, 11, .75);
+    width:100%;
+}
+
+#modal input::placeholder {
+    color:rgba(213, 191, 144, .5);
+}
