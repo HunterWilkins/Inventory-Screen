@@ -41,7 +41,6 @@ $(document).ready(function(){
     if (localPockets === null) {
         state.pockets = [];
     }
-
     
     state.pockets.forEach(function(item){
         $("#dash").append(
@@ -62,7 +61,7 @@ $(document).ready(function(){
         $("#item-name").val(editingItemName);
         $("#item-price").val(editingItemPrice);
         $("#item-quantity").val(editingItemQty);
-    })
+    });
 
     $("#inv-buttons").on("click", "button", function() {
         if ($(this).text() === "+") {
@@ -82,16 +81,18 @@ $(document).ready(function(){
         }
 
         else {
-            $("#inv-buttons").css("display", "block");
-            state.slot = $(this).attr("type");
-            $("#inv-name").text(state.slot);
-            if (state.inventory == false) {
-                $("#inventory").css("bottom", "0px");
-                state.inventory = !state.inventory;  
-            }
+            
+            toggleInv($(this).attr("type"));
+
+            // $("#inv-buttons").css("display", "block");
+            // state.slot = $(this).attr("type");
+            // $("#inv-name").text(state.slot);
+            // if (state.inventory == false) {
+            //     $("#inventory").css("bottom", "0px");
+            //     state.inventory = !state.inventory;  
+            // }
             
             populateInv($(this).attr("type").toLowerCase());
-            
         }
 
     });
@@ -122,6 +123,11 @@ $(document).ready(function(){
             state.pockets.push(pocketType);
             localStorage.setItem("pockets", JSON.stringify(state.pockets));
         };
+    });
+
+    $("#add-qty").on("click", function(){
+        let oldVal = parseInt($("#item-quantity").val());
+        $("#item-quantity").val(oldVal + 1);
     });
 
     $("#submit").on("click", function() {
@@ -157,7 +163,7 @@ $(document).ready(function(){
     $("#sell-all").on("click", function() {
         let total = 0;
         inventories.forEach(item => {
-            total += parseFloat(item.price);
+            total += parseFloat(item.price*item.quantity);
         });
 
         alert("You've gained $" + total + " from your items.");
@@ -173,17 +179,16 @@ $(document).ready(function(){
     function toggleInv() {
         if (!state.inventory){
             $("#inventory").css("bottom", "0px");
+            $("#close-inv").css("display", "block");
+            $("#inv-buttons").css("display", "block");
         }
 
         else {
-            $("#inventory").css("bottom", "-400px");
+            $("#inventory").css("bottom", "-80vh");
+            $("#inv-buttons").css("display", "none");
+            $("#close-inv").css("display", "none");
         }
         state.inventory = !state.inventory;
-    }
-
-    function inventoryData(item) {
-        console.log(inventory.indexOf(item));
-
     }
 
 // End of document.ready function    

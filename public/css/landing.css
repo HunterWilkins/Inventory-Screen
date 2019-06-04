@@ -10,9 +10,15 @@ button {
 }
 
 #close-inv {
-    border:none;
-    width:100%;
-    padding:10px;
+    display:none;
+    width:60px;
+    height:60px;
+    font-size:28px;
+    border-bottom:none;
+    position:fixed;
+    bottom:0;
+    left:0;
+    text-shadow:none;
 }
 
 #inv-name {
@@ -24,7 +30,8 @@ button {
 
 #inv-items {
     overflow-y: scroll;
-    height:200px;
+    height:65%;
+    border-bottom:rgb(213, 191, 144) solid 2px;
 }
 
 #dash {
@@ -62,12 +69,12 @@ button {
 
 #inventory {
     position: fixed;
-    height:400px;
+    height:80vh;
     background:rgb(26, 32, 18);
     z-index:8;
     width:100%;
     left:0;
-    bottom:-400px;
+    bottom:-80vh;
     overflow-y:scroll;
 
     transition: .25s;
@@ -78,13 +85,15 @@ button {
     position:fixed;
     right:5px;
     bottom:0px;
+   
 }
 
 #inv-buttons button {
-    font-size:26px;
+    font-size:30px;
     text-shadow:none;
-    height:50px;
-    width:50px;
+    height:60px;
+    width:60px;
+    border-bottom:none;
 }
 
 .legend, .item {
@@ -147,6 +156,23 @@ button {
     border:none;
     background:rgb(56, 56, 31);
     color:rgb(213, 191, 144);
+}
+
+ #modal #item-quantity {
+    width:50%;
+}
+
+#add-qty, #sub-qty {
+    border-bottom-color:rgba(56, 56, 31, .75);
+    border-right-color:rgba(56, 56, 31, .75);
+    background:rgba(213, 191, 144, .5);
+    color:white;
+    text-shadow:none;
+    display:inline-block;
+    font-size:20px;
+    padding:10px;
+    width:45px;
+    margin:5px, 0px;
 }
 
 #submit, #close-btn {
