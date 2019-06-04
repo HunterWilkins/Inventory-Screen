@@ -3,6 +3,7 @@ body{
 }
 
 button {
+    text-align:center;
     background: rgb(120, 108, 71);
     color:rgb(213, 191, 144);
     border:rgb(213, 191, 144) solid 2px;
