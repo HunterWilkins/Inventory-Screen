@@ -27,6 +27,7 @@ $(document).ready(function(){
         $("#dash").append(
             `
             <div class = "pocket" type = "${item}">
+                <img src = "${item}.jpg">
             </div>
             `
         );
@@ -91,6 +92,7 @@ $(document).ready(function(){
             $("#dash").append(
                 `
                 <div class = "pocket" type = "${pocketType}">
+                    <img src = "${pocketType}.jpg">
                 </div>
                 `
             );    
@@ -172,7 +174,6 @@ $(document).ready(function(){
     function  populateInv(slot) {
 
         relevantInventory = inventories.filter(item => item.type === slot);
-        console.log(relevantInventory);
 
         for(var i = 0; i < relevantInventory.length; i++) {
             $("#inv-items").append(
