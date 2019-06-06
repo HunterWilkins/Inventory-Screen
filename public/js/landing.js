@@ -35,6 +35,7 @@ $(document).ready(function(){
 
     $("#inv-items").on("click", ".item", function(){
         state.updating = true;
+        $("#modal-back").css("display", "block");
         $("#modal").css("display", "block");
         let editingItemName = $(this).children(".name").text();
         let editingItemPrice = $(this).children(".price").text();
@@ -47,11 +48,16 @@ $(document).ready(function(){
 
     $("#inv-button-box").on("click", "button", function() {
         if ($(this).text() === "+") {
+            $("#modal-back").css("display", "block");
             $("#modal").css("display", "block");
         }
 
         if ($(this).text() === "i") {
             showInfo(state.slot);
+        }
+
+        if ($(this).attr("id") === "trash") {
+            confirm("This will delete this pocket (including all items in it). Continue?");
         }
     });
 
@@ -78,6 +84,7 @@ $(document).ready(function(){
     });
 
     $("#close-btn").on("click", function() {
+        $("#modal-back").css("display", "none");
         $("#modal").css("display", "none");
     });
 
@@ -136,11 +143,28 @@ $(document).ready(function(){
         localStorage.setItem("inventories", JSON.stringify(inventories));
 
         $("#modal").css("display", "none");
+        $("#modal-back").css("display", "none");
 
         $("#inv-items").empty();
-        console.log("This is what's in your inventory:");
         populateInv(state.slot);
     });
+
+    $("#modal").on("click", ".trash", function() {
+        console.log(inventories);
+
+       inventories.forEach(function(item){
+           if (item.name === $("#item-name").val()) {
+               inventories.pop(item);
+               localStorage.setItem("inventories", JSON.stringify(inventories));
+               $("#inv-items").empty();
+               $("#modal-back").css("display", "none");
+               $("#modal").css("display", "none");   
+           }
+       });
+       populateInv(state.slot);
+
+       console.log(inventories);
+    })
 
     $("#sell-all").on("click", function() {
         let total = 0;
@@ -159,8 +183,6 @@ $(document).ready(function(){
     // Inventory Toggle Function
 
     function toggleInv() {
-        console.log(state.slot);
-
         if (!state.inventory){
             $("#inventory").css("bottom", "0px");
             $("#close-inv").css("display", "block");
@@ -176,7 +198,6 @@ $(document).ready(function(){
     }
 
     function  populateInv(slot) {
-
         relevantInventory = inventories.filter(item => item.type === slot);
 
         for(var i = 0; i < relevantInventory.length; i++) {

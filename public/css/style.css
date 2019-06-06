@@ -6,6 +6,18 @@ body {
     width:100%;
 }
 
+::-webkit-scrollbar {
+    width:4px;
+}
+
+::-webkit-scrollbar-track {
+    background:inherit;
+}
+
+::-webkit-scrollbar-thumb {
+    background:rgb(213,191,144);
+}
+
 em {
     font-style:italic;
 }

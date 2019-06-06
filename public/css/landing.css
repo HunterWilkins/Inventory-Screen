@@ -19,7 +19,8 @@ button {
 
 #inv-items {
     overflow-y: scroll;
-    height:70%;
+    max-height:70%;
+    min-height:2em;
     border-bottom:rgb(213, 191, 144) solid 2px;
 }
 
@@ -85,12 +86,16 @@ button {
     width:15%;
     right:0;
     bottom:0px;
+    height:inherit;
+
+    background:rgb(26, 32, 18);
   
 }
 
 #inv-buttons {
-    margin:0 auto;
     max-width:60px;
+    height:100%;
+    margin:0 auto;
 }
 
 #inv-buttons button {
@@ -136,6 +141,18 @@ button {
     font-size:26px;
     color:rgb(213, 191, 144);
     background:rgba(47, 47, 32, 0.8);
+}
+
+#modal-back {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    min-height:100vh;
+    min-width:100vw;
+    background:rgba(13, 18, 11, .75);
+
+    z-index:9;
 }
 
 #modal {
@@ -193,7 +210,7 @@ button {
 }
 
 #close-btn {
-    width:16%;
+    width:50%;
 }
 
 #close-btn-2 {
