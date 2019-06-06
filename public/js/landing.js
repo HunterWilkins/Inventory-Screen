@@ -55,7 +55,9 @@ $(document).ready(function(){
 
         if ($(this).attr("func") === "add"){
             $("#pocket-book").css("display", "block");
-            toggleInv();
+            if (state.inventory) {
+                toggleInv();
+            }
         }
 
         else {
