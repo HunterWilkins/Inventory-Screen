@@ -1,23 +1,6 @@
 $(document).ready(function(){
 
     // Inventory Setup =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/
-    let populateInv = function(slot) {
-
-        relevantInventory = inventories.filter(item => item.type === slot);
-        console.log(relevantInventory);
-
-        for(var i = 0; i < relevantInventory.length; i++) {
-            $("#inv-items").append(
-                `
-                <div class="item">
-                    <p class = "name">${relevantInventory[i].name}</p> 
-                    <p class = "price">${relevantInventory[i].price}</p> 
-                    <p class = "quantity">${relevantInventory[i].quantity}</p>
-                </div>
-                `
-            );
-        }
-    }
     let inventories = [];
     let localInv = JSON.parse(localStorage.getItem("inventories"));
     if (localInv !== null) {
@@ -25,8 +8,6 @@ $(document).ready(function(){
             inventories.push(item);
         });
     }
-    
-
     // =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/
     
     let localPockets = JSON.parse(localStorage.getItem("pockets"));
@@ -45,7 +26,7 @@ $(document).ready(function(){
     state.pockets.forEach(function(item){
         $("#dash").append(
             `
-            <div class = "pocket" type = ${item}>
+            <div class = "pocket" type = "${item}">
             </div>
             `
         );
@@ -74,10 +55,7 @@ $(document).ready(function(){
 
         if ($(this).attr("func") === "add"){
             $("#pocket-book").css("display", "block");
-            if (state.inventory) {
-                $("#inventory").css("bottom", "-400px");
-                state.inventory = !state.inventory;  
-            }
+            toggleInv();
         }
 
         else {
@@ -91,8 +69,12 @@ $(document).ready(function(){
             //     $("#inventory").css("bottom", "0px");
             //     state.inventory = !state.inventory;  
             // }
-            
-            populateInv($(this).attr("type").toLowerCase());
+            state.slot = $(this).attr("type");
+
+            console.log(state);
+            console.log($(this).attr("type").toLowerCase());
+            console.log(inventories);
+            populateInv($(this).attr("type"));
         }
 
     });
@@ -136,7 +118,7 @@ $(document).ready(function(){
             name: $("#item-name").val(),
             price: parseFloat($("#item-price").val()),
             quantity: parseInt($("#item-quantity").val()),
-            type: state.slot.toLowerCase()
+            type: state.slot
         };
 
         if (state.updating) {
@@ -157,7 +139,9 @@ $(document).ready(function(){
         $("#modal").css("display", "none");
 
         $("#inv-items").empty();
-        populateInv(state.slot.toLowerCase());
+        console.log("This is what's in your inventory:");
+        console.log(inventories);
+        populateInv(state.slot);
     });
 
     $("#sell-all").on("click", function() {
@@ -190,6 +174,25 @@ $(document).ready(function(){
         }
         state.inventory = !state.inventory;
     }
+
+    function  populateInv(slot) {
+
+        relevantInventory = inventories.filter(item => item.type === slot);
+        console.log(relevantInventory);
+
+        for(var i = 0; i < relevantInventory.length; i++) {
+            $("#inv-items").append(
+                `
+                <div class="item">
+                    <p class = "name">${relevantInventory[i].name}</p> 
+                    <p class = "price">${relevantInventory[i].price}</p> 
+                    <p class = "quantity">${relevantInventory[i].quantity}</p>
+                </div>
+                `
+            );
+        }
+    }
+  
 
 // End of document.ready function    
 });

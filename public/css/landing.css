@@ -90,6 +90,7 @@ button {
 }
 
 #inv-buttons button {
+    padding:0;
     font-size:30px;
     text-shadow:none;
     height:60px;
