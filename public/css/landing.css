@@ -170,6 +170,7 @@ button {
     z-index:11;
 }
 
+
 #modal input {
     font-size:20px;
     padding:10px;
@@ -199,7 +200,7 @@ button {
     margin:5px, 0px;
 }
 
-#submit, #close-btn {
+#submit, #close-btn, .trash {
     margin:5px;
     font-size:20px;
     font-weight:bolder;
@@ -207,6 +208,12 @@ button {
     color:rgb(213, 191, 144);
     border:rgb(213, 191, 144) solid 2px;
     padding:10px;
+}
+
+.trash {
+    height:inherit;
+    width:40px;
+    padding:5px;
 }
 
 #close-btn {

@@ -57,7 +57,21 @@ $(document).ready(function(){
         }
 
         if ($(this).attr("id") === "trash") {
-            confirm("This will delete this pocket (including all items in it). Continue?");
+            let confirmation = confirm("This will delete this pocket (including all items in it). Continue?");
+            if (confirmation){
+                inventories.forEach(function(item){
+                    if (item.type === state.slot) {
+                        inventories.pop(item);
+                    }
+                });
+                localStorage.setItem("inventories", JSON.stringify(inventories));
+                let newPockets = state.pockets.filter(item => item !== state.slot);
+                state.pockets = newPockets;
+                localStorage.setItem("pockets", JSON.stringify(state.pockets));
+
+                location.reload();
+            }
+            
         }
     });
 
@@ -134,6 +148,7 @@ $(document).ready(function(){
                     inventories[inventories.indexOf(item)] = newItem;
                 }
             });
+            state.updating = !state.updating;
         }
 
         else {
@@ -150,7 +165,6 @@ $(document).ready(function(){
     });
 
     $("#modal").on("click", ".trash", function() {
-        console.log(inventories);
 
        inventories.forEach(function(item){
            if (item.name === $("#item-name").val()) {
@@ -162,8 +176,6 @@ $(document).ready(function(){
            }
        });
        populateInv(state.slot);
-
-       console.log(inventories);
     })
 
     $("#sell-all").on("click", function() {
