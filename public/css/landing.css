@@ -19,7 +19,7 @@ button {
 
 #inv-items {
     overflow-y: scroll;
-    height:55%;
+    height:70%;
     border-bottom:rgb(213, 191, 144) solid 2px;
 }
 
@@ -90,7 +90,7 @@ button {
 
 #inv-buttons {
     margin:0 auto;
-    width:60px;
+    max-width:60px;
 }
 
 #inv-buttons button {
@@ -100,7 +100,7 @@ button {
     font-size:30px;
     text-shadow:none;
     height:60px;
-    width:60px;
+    width:100%;
     margin-bottom:10px;
 }
 

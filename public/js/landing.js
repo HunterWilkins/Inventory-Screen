@@ -205,7 +205,16 @@ $(document).ready(function(){
             totalQty += item.quantity;
         });
 
-        alert(totalItems);
+    alert(
+    `
+    ${slot} Pocket Info
+    __________________________________
+    Number of Items: ${totalItems}
+    Total Value of All Items: $${totalValue.toFixed(2)}
+    Total Number of All Items: ${totalQty}
+    __________________________________
+    `
+    );
     }
   
 
