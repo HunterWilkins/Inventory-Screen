@@ -59,24 +59,12 @@ $(document).ready(function(){
         }
 
         else {
-            
-            toggleInv($(this).attr("type"));
-
-            // $("#inv-buttons").css("display", "block");
-            // state.slot = $(this).attr("type");
-            // $("#inv-name").text(state.slot);
-            // if (state.inventory == false) {
-            //     $("#inventory").css("bottom", "0px");
-            //     state.inventory = !state.inventory;  
-            // }
+            if (!state.inventory){
+                toggleInv();
+            }
             state.slot = $(this).attr("type");
-
-            console.log(state);
-            console.log($(this).attr("type").toLowerCase());
-            console.log(inventories);
             populateInv($(this).attr("type"));
         }
-
     });
 
     $("#close-btn").on("click", function() {
@@ -140,7 +128,6 @@ $(document).ready(function(){
 
         $("#inv-items").empty();
         console.log("This is what's in your inventory:");
-        console.log(inventories);
         populateInv(state.slot);
     });
 
@@ -168,7 +155,7 @@ $(document).ready(function(){
         }
 
         else {
-            $("#inventory").css("bottom", "-80vh");
+            $("#inventory").css("bottom", "-60vh");
             $("#inv-buttons").css("display", "none");
             $("#close-inv").css("display", "none");
         }

@@ -37,6 +37,7 @@ button {
 
 #dash {
     text-align:center;
+    height:30vh;
 }
 
 #sell-all {
@@ -70,13 +71,12 @@ button {
 
 #inventory {
     position: fixed;
-    height:80vh;
+    height:60vh;
     background:rgb(26, 32, 18);
     z-index:8;
     width:100%;
     left:0;
-    bottom:-80vh;
-    overflow-y:scroll;
+    bottom:-60vh;
 
     transition: .25s;
 }
