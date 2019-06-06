@@ -10,18 +10,6 @@ button {
     text-shadow:0 2px 5px rgba(13, 18, 11, .75);
 }
 
-#close-inv {
-    display:none;
-    width:60px;
-    height:60px;
-    font-size:28px;
-    border-bottom:none;
-    position:fixed;
-    bottom:0;
-    left:0;
-    text-shadow:none;
-}
-
 #inv-name {
     padding:5px;
     color:rgb(213, 191, 144);
@@ -83,28 +71,37 @@ button {
     height:60vh;
     background:rgb(26, 32, 18);
     z-index:8;
-    width:100%;
+    width:85%;
     left:0;
     bottom:-60vh;
-
+    margin-right:60px;
     transition: .25s;
 }
 
-#inv-buttons {
+#inv-button-box {
     display:none;
     position:fixed;
-    right:5px;
+    text-align:center;
+    width:15%;
+    right:0;
     bottom:0px;
-   
+  
+}
+
+#inv-buttons {
+    margin:0 auto;
+    width:60px;
 }
 
 #inv-buttons button {
+    cursor:pointer;
+    display:inline-block;
     padding:0;
     font-size:30px;
     text-shadow:none;
     height:60px;
     width:60px;
-    border-bottom:none;
+    margin-bottom:10px;
 }
 
 .legend, .item {
@@ -122,9 +119,8 @@ button {
 }
 
 .name {
-    width:60%;
+    width:55%;
     text-align:left;
-
 }
 
 .price {

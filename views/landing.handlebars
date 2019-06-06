@@ -17,13 +17,17 @@
 
     <div id="inventory">
         <h3 id = "inv-title"></h3>
-        <button id = "close-inv"><span>x</span></button>
+        
         <h3 id = "inv-name"></h3>
-        <div id="inv-buttons">
-            <button>+</button>
-            <button>-</button>
-        </div>
 
+        <div id="inv-button-box">
+            <div id="inv-buttons">
+                <button id = "info-button">i</button>
+                <button>+</button>
+                <button id = "close-inv">x</button>
+            </div>
+        </div>
+        
         <div class="legend">
             <p class = "name"><em>Name</em></p>
             <p class = "price"><em>Value</em></p>
@@ -36,15 +40,18 @@
         
     </div>
 
-    <div id="modal">
-        <input id = "item-name" type="text" placeholder= "Item Name">
-        <input id = "item-price" type="text" placeholder = "Item Price">
-        <input id = "item-quantity" type="text" placeholder = "Item Quantity">
-        <button id = "add-qty">+</button>
-        <button id = "sub-qty">-</button>
-        <button id = "submit">Submit</button>
-        <button id = "close-btn">X</button>
+    <div id="modal-back">
+        <div id="modal">
+            <input id = "item-name" type="text" placeholder= "Item Name">
+            <input id = "item-price" type="text" placeholder = "Item Price">
+            <input id = "item-quantity" type="text" placeholder = "Item Quantity">
+            <button id = "add-qty">+</button>
+            <button id = "sub-qty">-</button>
+            <button id = "submit">Submit</button>
+            <button id = "close-btn">X</button>
+        </div>
     </div>
+    
 
     <div id="pocket-book">
         <div id="pocket-book-content">

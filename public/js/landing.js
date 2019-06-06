@@ -45,9 +45,13 @@ $(document).ready(function(){
         $("#item-quantity").val(editingItemQty);
     });
 
-    $("#inv-buttons").on("click", "button", function() {
+    $("#inv-button-box").on("click", "button", function() {
         if ($(this).text() === "+") {
             $("#modal").css("display", "block");
+        }
+
+        if ($(this).text() === "i") {
+            showInfo(state.slot);
         }
     });
 
@@ -160,12 +164,12 @@ $(document).ready(function(){
         if (!state.inventory){
             $("#inventory").css("bottom", "0px");
             $("#close-inv").css("display", "block");
-            $("#inv-buttons").css("display", "block");
+            $("#inv-button-box").css("display", "block");
         }
 
         else {
             $("#inventory").css("bottom", "-60vh");
-            $("#inv-buttons").css("display", "none");
+            $("#inv-button-box").css("display", "none");
             $("#close-inv").css("display", "none");
         }
         state.inventory = !state.inventory;
@@ -186,6 +190,22 @@ $(document).ready(function(){
                 `
             );
         }
+    }
+
+    function showInfo(slot) {
+        relevantInventory = inventories.filter(item => item.type === slot);
+
+        let totalItems = 0;
+        let totalValue = 0;
+        let totalQty = 0;
+
+        relevantInventory.forEach(function(item) {
+            totalItems += 1;
+            totalValue += parseFloat(item.price * item.quantity);
+            totalQty += item.quantity;
+        });
+
+        alert(totalItems);
     }
   
 
