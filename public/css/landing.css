@@ -35,6 +35,13 @@ button {
     border-bottom:rgb(213, 191, 144) solid 2px;
 }
 
+#inv-title {
+    color:rgb(213, 191, 144);
+    padding:5px;
+    font-size:26px;
+    
+}
+
 #dash {
     text-align:center;
     height:30vh;

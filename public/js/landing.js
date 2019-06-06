@@ -61,12 +61,15 @@ $(document).ready(function(){
         }
 
         else {
+            state.slot = $(this).attr("type");
+            populateInv($(this).attr("type"));
             if (!state.inventory){
                 toggleInv();
             }
-            state.slot = $(this).attr("type");
-            populateInv($(this).attr("type"));
         }
+
+        $("#inv-title").text(state.slot);
+
     });
 
     $("#close-btn").on("click", function() {
@@ -150,6 +153,8 @@ $(document).ready(function(){
     // Inventory Toggle Function
 
     function toggleInv() {
+        console.log(state.slot);
+
         if (!state.inventory){
             $("#inventory").css("bottom", "0px");
             $("#close-inv").css("display", "block");
