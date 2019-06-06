@@ -31,7 +31,7 @@ button {
 
 #inv-items {
     overflow-y: scroll;
-    height:65%;
+    height:55%;
     border-bottom:rgb(213, 191, 144) solid 2px;
 }
 
