@@ -59,7 +59,7 @@ $(document).ready(function(){
         if ($(this).attr("id") === "trash") {
             let confirmation = confirm("This will delete this pocket (including all items in it). Continue?");
             if (confirmation) {
-                let newInventory = inventories.filter(item => item !== state.slot);
+                let newInventory = inventories.filter(item => item.type !== state.slot);
                 inventories = newInventory;
                 localStorage.setItem("inventories", JSON.stringify(inventories));
                 
@@ -163,16 +163,13 @@ $(document).ready(function(){
 
     $("#modal").on("click", ".trash", function() {
 
-       inventories.forEach(function(item){
-           if (item.name === $("#item-name").val()) {
-               inventories.pop(item);
-               localStorage.setItem("inventories", JSON.stringify(inventories));
-               $("#inv-items").empty();
-               $("#modal-back").css("display", "none");
-               $("#modal").css("display", "none");   
-           }
-       });
-       populateInv(state.slot);
+        let newInventory = inventories.filter(item => item.name !== $("#item-name").val());
+        inventories = newInventory;
+        localStorage.setItem("inventories", JSON.stringify(inventories));
+        $("#inv-items").empty();
+        $("#modal-back").css("display", "none");
+        $("#modal").css("display", "none");   
+        populateInv(state.slot);
     })
 
     $("#sell-all").on("click", function() {
