@@ -58,20 +58,17 @@ $(document).ready(function(){
 
         if ($(this).attr("id") === "trash") {
             let confirmation = confirm("This will delete this pocket (including all items in it). Continue?");
-            if (confirmation){
-                inventories.forEach(function(item){
-                    if (item.type === state.slot) {
-                        inventories.pop(item);
-                    }
-                });
+            if (confirmation) {
+                let newInventory = inventories.filter(item => item !== state.slot);
+                inventories = newInventory;
                 localStorage.setItem("inventories", JSON.stringify(inventories));
+                
                 let newPockets = state.pockets.filter(item => item !== state.slot);
                 state.pockets = newPockets;
                 localStorage.setItem("pockets", JSON.stringify(state.pockets));
 
                 location.reload();
             }
-            
         }
     });
 
