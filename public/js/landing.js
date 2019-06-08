@@ -125,8 +125,20 @@ $(document).ready(function(){
     });
 
     $("#add-qty").on("click", function(){
-        let oldVal = parseInt($("#item-quantity").val());
-        $("#item-quantity").val(oldVal + 1);
+        if ($("#item-quantity").val() === "") {
+            $("#item-quantity").val(1);
+        }
+        else {
+            let oldVal = parseInt($("#item-quantity").val());
+            $("#item-quantity").val(oldVal + 1);
+        }
+    });
+
+    $("#sub-qty").on("click", function() {
+        if ($("#item-quantity").val() > 0) {
+            let oldVal = parseInt($("#item-quantity").val());
+            $("#item-quantity").val(oldVal - 1);
+        }
     });
 
     $("#submit").on("click", function() {
@@ -138,27 +150,34 @@ $(document).ready(function(){
             type: state.slot
         };
 
-        if (state.updating) {
-            inventories.forEach(function(item){
-                if (item.name === newItem.name){
-                    console.log("Updating old item...");
-                    inventories[inventories.indexOf(item)] = newItem;
-                }
-            });
-            state.updating = !state.updating;
+        if (!newItem.name || newItem.price === "") {
+            alert("You must at least put in a Name and Value for your item.");
         }
 
         else {
-            inventories.push(newItem);
+            if (state.updating) {
+                inventories.forEach(function(item){
+                    if (item.name === newItem.name){
+                        console.log("Updating old item...");
+                        inventories[inventories.indexOf(item)] = newItem;
+                    }
+                });
+                state.updating = !state.updating;
+            }
+    
+            else {
+                inventories.push(newItem);
+            }
+            
+            localStorage.setItem("inventories", JSON.stringify(inventories));
+    
+            $("#modal").css("display", "none");
+            $("#modal-back").css("display", "none");
+    
+            $("#inv-items").empty();
+            populateInv(state.slot);
         }
-        
-        localStorage.setItem("inventories", JSON.stringify(inventories));
 
-        $("#modal").css("display", "none");
-        $("#modal-back").css("display", "none");
-
-        $("#inv-items").empty();
-        populateInv(state.slot);
     });
 
     $("#modal").on("click", ".trash", function() {

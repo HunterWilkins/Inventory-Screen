@@ -37,11 +37,11 @@ button {
 }
 
 #sell-all {
-    position:fixed;
+    /* position:fixed;
     top:0;
     right:0;
     padding:10px;
-    font-size:20px;
+    font-size:20px; */
 }
 
 .pocket {
