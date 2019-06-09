@@ -25,7 +25,8 @@ button {
 }
 
 #inv-title {
-    color:rgb(213, 191, 144);
+    color:rgb(238, 226, 171);
+    background:rgb(120, 108, 71);
     padding:5px;
     font-size:26px;
 
@@ -115,7 +116,7 @@ button {
 .legend, .item {
     font-size:20px;
     width:100%;
-    padding:15px;
+    padding:5px;
     color:rgb(213, 191, 144);
 }
 
@@ -125,6 +126,7 @@ button {
     text-align:center;
     padding:5px;
 }
+
 
 .name {
     width:55%;
@@ -143,7 +145,10 @@ button {
     cursor:pointer;
     font-size:26px;
     color:rgb(213, 191, 144);
+    border-top:rgba(9, 10, 6, 0.8) solid 2px;
+    border-bottom:rgba(71, 69, 49, 0.8) solid 2px;
     background:rgba(47, 47, 32, 0.8);
+    margin-bottom:10px;
 }
 
 #modal-back {
