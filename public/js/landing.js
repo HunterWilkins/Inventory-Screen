@@ -114,7 +114,7 @@ $(document).ready(function(){
             $("#dash").append(
                 `
                 <div class = "pocket" type = "${pocketType}">
-                    <img src = "${pocketType}.jpg">
+                    <img src = "${pocketType}.png">
                 </div>
                 `
             );    
