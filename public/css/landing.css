@@ -33,7 +33,10 @@ button {
 
 #dash {
     text-align:center;
-    height:30vh;
+    padding:15px 0;
+    width:100%;
+    overflow-x: scroll;
+    white-space:nowrap;
 }
 
 #sell-all {

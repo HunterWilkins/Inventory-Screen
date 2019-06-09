@@ -8,6 +8,7 @@ body {
 
 ::-webkit-scrollbar {
     width:4px;
+    height:4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -44,7 +45,7 @@ nav {
     left:0;
     width:100%;
     height:50px;
-    background:black;
+    background:rgb(38, 39, 18);
     color:white;
     text-align:center;
 }
@@ -69,7 +70,8 @@ nav > * {
 }
 
 #content {
-    margin-top:50px;
     padding:15px;
     width:100%;
+    height:30vh;
+
 }
