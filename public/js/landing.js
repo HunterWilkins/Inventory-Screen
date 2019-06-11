@@ -1,11 +1,6 @@
 $(document).ready(function(){
 
-    let state = {
-        inventory: false,
-        slot: "",
-        pockets: localPockets,
-        updating: false
-    }
+ 
 
     // Data Setup =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/
     let inventories = [];
@@ -17,6 +12,13 @@ $(document).ready(function(){
     }
     
     let localPockets = JSON.parse(localStorage.getItem("pockets"));
+
+    let state = {
+        inventory: false,
+        slot: "",
+        pockets: localPockets,
+        updating: false
+    }
 
     if (localPockets === null) {
         state.pockets = [];
@@ -32,6 +34,7 @@ $(document).ready(function(){
         );
     });
     // =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/
+    
     
 
     $("#inv-items").on("click", ".item", function(){
@@ -126,7 +129,8 @@ $(document).ready(function(){
     });
 
     $("#add-qty").on("click", function(){
-        if (typeof($("#item-quantity").val()) !== Number) {
+
+        if ($("#item-quantity").val() === "") {
             $("#item-quantity").val(1);
         }
         else {
@@ -168,25 +172,15 @@ $(document).ready(function(){
             else {
                 inventories.push(newItem);
             }
-            
-            localStorage.setItem("inventories", JSON.stringify(inventories));
-    
-            $("#modal").css("display", "none");
-            $("#modal-back").css("display", "none");
-    
-            $("#inv-items").empty();
-            populateInv();
+
+            updateInv();
         }
     });
 
     $("#modal").on("click", ".trash", function() {
         let newInventory = inventories.filter(item => item.name !== $("#item-name").val());
         inventories = newInventory;
-        localStorage.setItem("inventories", JSON.stringify(inventories));
-        $("#inv-items").empty();
-        $("#modal-back").css("display", "none");
-        $("#modal").css("display", "none");   
-        populateInv();
+        updateInv();
     });
 
     $("#sell-all").on("click", function() {
@@ -195,7 +189,7 @@ $(document).ready(function(){
             total += parseFloat(item.price*item.quantity);
         });
 
-        alert("You've gained $" + total + " from your items.");
+        alert("You've cleared out $" + total.toFixed(2) + " worth of items.");
         localStorage.clear();
         inventories = [];
         location.reload();
@@ -205,15 +199,13 @@ $(document).ready(function(){
 
     function toggleInv() {
         if (!state.inventory){
-            $("#inventory").css("top", "150px");
-            $("#inventory").css("bottom", "0");
+            $("#inventory").css("left", "0px");
             $("#close-inv").css("display", "block");
             $("#inv-button-box").css("display", "block");
         }
 
         else {
-            $("#inventory").css("top", "initial");
-            $("#inventory").css("bottom", "-100vh");
+            $("#inventory").css("left", "-85%");
             $("#inv-button-box").css("display", "none");
             $("#close-inv").css("display", "none");
         }
@@ -221,6 +213,8 @@ $(document).ready(function(){
     }
 
     function  populateInv() {
+       
+
         relevantInventory = inventories.filter(item => item.type === state.slot);
 
         for(var i = 0; i < relevantInventory.length; i++) {
@@ -261,6 +255,13 @@ $(document).ready(function(){
     );
     }
   
+    function updateInv() {
+        $("#modal").css("display", "none");
+        $("#modal-back").css("display", "none");
+        localStorage.setItem("inventories", JSON.stringify(inventories));
+        $("#inv-items").empty();
+        populateInv();
+    }
 
 // End of document.ready function    
 });

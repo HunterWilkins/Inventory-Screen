@@ -35,6 +35,7 @@ button {
 #dash {
     text-align:center;
     padding:15px 0;
+    height:150px;
     width:100%;
     overflow-x: scroll;
     white-space:nowrap;
@@ -72,12 +73,13 @@ button {
 }
 
 #inventory {
-    position: absolute;
+    position: fixed;
     background:rgb(26, 32, 18);
-    z-index:8;
+    z-index:5;
     width:85%;
-    left:0;
-    bottom: -100vh;
+    left:-85%;
+    top:170px;
+    bottom:0px;
     margin-right:60px;
     transition: .25s;
 }
