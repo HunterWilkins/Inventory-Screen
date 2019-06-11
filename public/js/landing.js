@@ -209,13 +209,15 @@ $(document).ready(function(){
 
     function toggleInv() {
         if (!state.inventory){
-            $("#inventory").css("bottom", "0px");
+            $("#inventory").css("top", "150px");
+            $("#inventory").css("bottom", "0");
             $("#close-inv").css("display", "block");
             $("#inv-button-box").css("display", "block");
         }
 
         else {
-            $("#inventory").css("bottom", "-60vh");
+            $("#inventory").css("top", "initial");
+            $("#inventory").css("bottom", "-100vh");
             $("#inv-button-box").css("display", "none");
             $("#close-inv").css("display", "none");
         }

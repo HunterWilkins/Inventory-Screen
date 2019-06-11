@@ -72,25 +72,24 @@ button {
 }
 
 #inventory {
-    position: fixed;
-    height:60vh;
+    position: absolute;
     background:rgb(26, 32, 18);
     z-index:8;
     width:85%;
     left:0;
-    bottom:-60vh;
+    bottom: -100vh;
     margin-right:60px;
     transition: .25s;
 }
 
 #inv-button-box {
     display:none;
-    position:fixed;
+    position:absolute;
     text-align:center;
     width:15%;
-    right:0;
+    right:-15%;
     bottom:0px;
-    height:inherit;
+    padding-top:10px;
 
     background:rgb(26, 32, 18);
   
@@ -98,7 +97,6 @@ button {
 
 #inv-buttons {
     max-width:60px;
-    height:100%;
     margin:0 auto;
 }
 
