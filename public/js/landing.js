@@ -1,6 +1,13 @@
 $(document).ready(function(){
 
-    // Inventory Setup =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/
+    let state = {
+        inventory: false,
+        slot: "",
+        pockets: localPockets,
+        updating: false
+    }
+
+    // Data Setup =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/
     let inventories = [];
     let localInv = JSON.parse(localStorage.getItem("inventories"));
     if (localInv !== null) {
@@ -8,16 +15,8 @@ $(document).ready(function(){
             inventories.push(item);
         });
     }
-    // =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/
     
     let localPockets = JSON.parse(localStorage.getItem("pockets"));
-
-    let state = {
-        inventory: false,
-        slot: "",
-        pockets: localPockets,
-        updating: false
-    }
 
     if (localPockets === null) {
         state.pockets = [];
@@ -32,6 +31,8 @@ $(document).ready(function(){
             `
         );
     });
+    // =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/
+    
 
     $("#inv-items").on("click", ".item", function(){
         state.updating = true;
@@ -84,7 +85,7 @@ $(document).ready(function(){
 
         else {
             state.slot = $(this).attr("type");
-            populateInv($(this).attr("type"));
+            populateInv();
             if (!state.inventory){
                 toggleInv();
             }
@@ -125,7 +126,7 @@ $(document).ready(function(){
     });
 
     $("#add-qty").on("click", function(){
-        if ($("#item-quantity").val() === "") {
+        if (typeof($("#item-quantity").val()) !== Number) {
             $("#item-quantity").val(1);
         }
         else {
@@ -158,7 +159,6 @@ $(document).ready(function(){
             if (state.updating) {
                 inventories.forEach(function(item){
                     if (item.name === newItem.name){
-                        console.log("Updating old item...");
                         inventories[inventories.indexOf(item)] = newItem;
                     }
                 });
@@ -175,21 +175,19 @@ $(document).ready(function(){
             $("#modal-back").css("display", "none");
     
             $("#inv-items").empty();
-            populateInv(state.slot);
+            populateInv();
         }
-
     });
 
     $("#modal").on("click", ".trash", function() {
-
         let newInventory = inventories.filter(item => item.name !== $("#item-name").val());
         inventories = newInventory;
         localStorage.setItem("inventories", JSON.stringify(inventories));
         $("#inv-items").empty();
         $("#modal-back").css("display", "none");
         $("#modal").css("display", "none");   
-        populateInv(state.slot);
-    })
+        populateInv();
+    });
 
     $("#sell-all").on("click", function() {
         let total = 0;
@@ -204,8 +202,6 @@ $(document).ready(function(){
     });
 
     $("#close-inv").on("click", toggleInv);
-
-    // Inventory Toggle Function
 
     function toggleInv() {
         if (!state.inventory){
@@ -224,8 +220,8 @@ $(document).ready(function(){
         state.inventory = !state.inventory;
     }
 
-    function  populateInv(slot) {
-        relevantInventory = inventories.filter(item => item.type === slot);
+    function  populateInv() {
+        relevantInventory = inventories.filter(item => item.type === state.slot);
 
         for(var i = 0; i < relevantInventory.length; i++) {
             $("#inv-items").append(
